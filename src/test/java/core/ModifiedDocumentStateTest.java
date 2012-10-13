@@ -38,5 +38,13 @@ public class ModifiedDocumentStateTest {
 		assertThat( document.getState(), is( State.DELETED ) );
 	}
 	
+	@Test
+	public void revertChangesStateToAdded() throws Exception {
+		
+		modifiedDocumentState.revert(document);
+		
+		assertThat( document.getState(), is( State.ADDED ) );
+	}
+	
 
 }
