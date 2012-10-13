@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import core.Document.State;
 import core.state.AddedDocumentState;
+import core.state.DeletedDocumentState;
 import core.state.ModifiedDocumentState;
 import core.state.NewDocumentState;
 
@@ -39,7 +40,15 @@ public class DocumentContextTest {
 		
 		assertThat( documentContext.getDocumentState(), is(instanceOf(ModifiedDocumentState.class)));
 	}
-
-
+	
+	@Test
+	public void createDocumentContextForDeletedDocumentWithDeletedDocumentState() {
+		Document document = new Document();
+		document.setState( State.DELETED );
+		
+		DocumentContext documentContext = DocumentContext.createDocumentContext( document );
+		
+		assertThat( documentContext.getDocumentState(), is(instanceOf(DeletedDocumentState.class)));
+	}
 
 }
