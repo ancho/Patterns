@@ -7,7 +7,7 @@ public class ModifiedDocumentState implements DocumentState {
 
 	@Override
 	public void revert(Document document) {
-
+		document.setState( State.ADDED );
 	}
 
 	@Override
