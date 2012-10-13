@@ -50,11 +50,11 @@ public class NewDocumentStateTest {
 	}
 	
 	@Test
-	public void deleteRemovesTheDocument() throws Exception {
+	public void deleteChangesStateToEnd() throws Exception {
 		
 		newDocumentState.delete( document );
 		
-		assertNull( document );
+		assertThat( document.getState(), is(State.END) );
 	}
 
 	private void mockFileExists(boolean exists) {

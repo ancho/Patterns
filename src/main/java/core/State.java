@@ -1,5 +1,5 @@
 package core;
 
 public enum State {
-	NEW, MODIFIED, ADDED
+	NEW, MODIFIED, ADDED, END
 }

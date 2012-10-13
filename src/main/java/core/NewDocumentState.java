@@ -18,5 +18,5 @@ public class NewDocumentState {
 	public void delete(Document document) {
 		
 	}
-
+	
 }
