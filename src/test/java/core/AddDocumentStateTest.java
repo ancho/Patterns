@@ -40,6 +40,16 @@ public class AddDocumentStateTest {
 		assertThat( document.getState(), is( State.END ) );
 	}
 
+	@Test
+	public void saveDoesNotChangeState() {
+		Document document = new Document();
+		document.setState( State.ADDED );
+		AddDocumentState addDocumentState = new AddDocumentState();
+		
+		addDocumentState.save( document );
+		
+		assertThat( document.getState(), is( State.ADDED ) );
+	}
 
 
 }
