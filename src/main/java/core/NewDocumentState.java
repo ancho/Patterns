@@ -16,7 +16,7 @@ public class NewDocumentState {
 	}
 
 	public void delete(Document document) {
-		
+		document.setState( State.END );
 	}
 	
 }
