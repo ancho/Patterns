@@ -10,6 +10,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import core.Document.State;
+import core.state.DocumentState;
+import core.state.NewDocumentState;
 
 public class NewDocumentStateTest {
 

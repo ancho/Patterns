@@ -7,6 +7,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import core.Document.State;
+import core.state.AddDocumentState;
+import core.state.DocumentState;
 
 public class AddDocumentStateTest {
 

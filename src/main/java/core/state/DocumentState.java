@@ -1,4 +1,6 @@
-package core;
+package core.state;
+
+import core.Document;
 
 public interface DocumentState {
 

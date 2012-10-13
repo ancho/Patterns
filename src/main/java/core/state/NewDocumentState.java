@@ -1,5 +1,6 @@
-package core;
+package core.state;
 
+import core.Document;
 import core.Document.State;
 
 public class NewDocumentState implements DocumentState{
