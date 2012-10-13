@@ -1,5 +1,7 @@
 package core;
 
+import core.Document.State;
+
 public class AddDocumentState implements DocumentState {
 
 	/* (non-Javadoc)

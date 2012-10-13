@@ -9,6 +9,8 @@ import java.io.File;
 import org.junit.Before;
 import org.junit.Test;
 
+import core.Document.State;
+
 public class NewDocumentStateTest {
 
 	private Document document;
@@ -55,6 +57,14 @@ public class NewDocumentStateTest {
 		newDocumentState.delete( document );
 		
 		assertThat( document.getState(), is(State.END) );
+	}
+	
+	@Test
+	public void commitDoesNotChangeState() throws Exception {
+		
+		newDocumentState.commit(document);
+		
+		assertThat( document.getState(), is(State.NEW) );
 	}
 
 	private void mockFileExists(boolean exists) {

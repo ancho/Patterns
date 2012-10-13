@@ -1,5 +1,7 @@
 package core;
 
+import core.Document.State;
+
 public class NewDocumentState implements DocumentState{
 
 	public void revert(Document document) {

@@ -4,6 +4,10 @@ import java.io.File;
 
 public class Document {
 
+	public enum State {
+		NEW, MODIFIED, ADDED, END
+	}
+	
 	private State state;
 	private File file;
 	
