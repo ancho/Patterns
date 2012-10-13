@@ -1,6 +1,7 @@
 package core.state;
 
 import core.Document;
+import core.Document.State;
 
 public class ModifiedDocumentState implements DocumentState {
 
@@ -16,7 +17,7 @@ public class ModifiedDocumentState implements DocumentState {
 
 	@Override
 	public void delete(Document document) {
-
+		document.setState( State.DELETED );
 	}
 
 	@Override
