@@ -2,6 +2,9 @@ package core;
 
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
+import static org.mockito.Mockito.*;
+
+import java.io.File;
 
 import org.junit.Test;
 
@@ -21,7 +24,11 @@ public class NewDocumentStateTest {
 	public void saveChangesStateToModifiedIfFileExists() throws Exception {
 		Document document = new Document();
 		NewDocumentState newDocumentState = new NewDocumentState();
-		
+
+		File file = mock( File.class );
+		when( file.exists() ).thenReturn( true );
+		document.setFile( file );
+
 		newDocumentState.save( document );
 		
 		assertThat( document.getState(), is(State.MODIFIED) );
@@ -31,6 +38,10 @@ public class NewDocumentStateTest {
 	public void saveChangesStateToAddedIfFileDoesNotExist() throws Exception {
 		Document document = new Document();
 		NewDocumentState newDocumentState = new NewDocumentState();
+		
+		File file = mock( File.class );
+		when( file.exists() ).thenReturn( false );
+		document.setFile( file );
 		
 		newDocumentState.save( document );
 		

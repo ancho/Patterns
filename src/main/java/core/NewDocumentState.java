@@ -7,7 +7,12 @@ public class NewDocumentState {
 	}
 
 	public void save(Document document) {
-		document.setState( State.MODIFIED );
+		if ( document.getFile().exists() ){
+			document.setState( State.MODIFIED );
+		}
+		else {
+			document.setState( State.ADDED );
+		}
 	}
 
 }
