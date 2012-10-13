@@ -3,15 +3,23 @@ package core;
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class AddDocumentStateTest {
 
+	private Document document;
+	private AddDocumentState addDocumentState;
+	
+	@Before
+	public void setUp() {
+		document = new Document();
+		document.setState( State.ADDED );
+		addDocumentState = new AddDocumentState();
+	}
+
 	@Test
 	public void revertChangesStateToNew() {
-		Document document = new Document();
-		document.setState( State.ADDED );
-		AddDocumentState addDocumentState = new AddDocumentState();
 		
 		addDocumentState.revert( document );
 		
@@ -20,9 +28,6 @@ public class AddDocumentStateTest {
 	
 	@Test
 	public void commitChangesStateToEnd() {
-		Document document = new Document();
-		document.setState( State.ADDED );
-		AddDocumentState addDocumentState = new AddDocumentState();
 		
 		addDocumentState.commit( document );
 		
@@ -31,9 +36,6 @@ public class AddDocumentStateTest {
 	
 	@Test
 	public void deleteChangesStateToEnd() {
-		Document document = new Document();
-		document.setState( State.ADDED );
-		AddDocumentState addDocumentState = new AddDocumentState();
 		
 		addDocumentState.delete( document );
 		
@@ -42,9 +44,6 @@ public class AddDocumentStateTest {
 
 	@Test
 	public void saveDoesNotChangeState() {
-		Document document = new Document();
-		document.setState( State.ADDED );
-		AddDocumentState addDocumentState = new AddDocumentState();
 		
 		addDocumentState.save( document );
 		
