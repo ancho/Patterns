@@ -28,6 +28,18 @@ public class AddDocumentStateTest {
 		
 		assertThat( document.getState(), is( State.END ) );
 	}
+	
+	@Test
+	public void deleteChangesStateToEnd() {
+		Document document = new Document();
+		document.setState( State.ADDED );
+		AddDocumentState addDocumentState = new AddDocumentState();
+		
+		addDocumentState.delete( document );
+		
+		assertThat( document.getState(), is( State.END ) );
+	}
+
 
 
 }
