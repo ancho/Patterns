@@ -47,5 +47,7 @@ public class Document {
 	public File getFile() {
 		return file;
 	}
+	
+	//TODO implement getDocumentState
 
 }

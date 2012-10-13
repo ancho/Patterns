@@ -52,7 +52,7 @@ public class NewDocumentStateTest {
 	@Test
 	public void saveChangesStateToModifiedIfFileExists() throws Exception {
 
-		mockFileExists( true );
+		new DocumentMockUtil(document).mockFileExists( true );
 
 		newDocumentState.save( document );
 		
@@ -62,17 +62,12 @@ public class NewDocumentStateTest {
 	@Test
 	public void saveChangesStateToAddedIfFileDoesNotExist() throws Exception {
 		
-		mockFileExists(false);
+		new DocumentMockUtil(document).mockFileExists( false );
 		
 		newDocumentState.save( document );
 		
 		assertThat( document.getState(), is(State.ADDED) );
 	}
 
-	private void mockFileExists(boolean exists) {
-		File file = mock( File.class );
-		when( file.exists() ).thenReturn( exists );
-		document.setFile( file );
-	}
 
 }

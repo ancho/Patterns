@@ -42,4 +42,9 @@ public class DocumentContext {
 		setDocumentState( this.document.getState().getDocumentState() );
 	}
 
+	public void save() {
+		this.documentState.save(this.document);
+		updateDocumentState();	
+	}
+
 }

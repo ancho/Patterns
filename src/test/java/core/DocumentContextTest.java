@@ -92,7 +92,7 @@ public class DocumentContextTest {
 	@Test
 	public void saveChangesDocumentStatusToModifiedIfFileExistsOnNewDocument() throws Exception {
 		
-		new DocumentUtil(document).mockFileExists(true);
+		new DocumentMockUtil(document).mockFileExists(true);
 		createDocumentContext();
 		
 		documentContext.save();
@@ -104,7 +104,7 @@ public class DocumentContextTest {
 	@Test
 	public void saveChangesDocumentStatusToAddedIfFileDoesNotExistOnNewDocument() throws Exception {
 		
-		new DocumentUtil(document).mockFileExists(false);
+		new DocumentMockUtil(document).mockFileExists(false);
 		createDocumentContext();
 		
 		documentContext.save();
