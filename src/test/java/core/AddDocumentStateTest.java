@@ -9,7 +9,7 @@ import org.junit.Test;
 public class AddDocumentStateTest {
 
 	private Document document;
-	private AddDocumentState addDocumentState;
+	private DocumentState addDocumentState;
 	
 	@Before
 	public void setUp() {
