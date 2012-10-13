@@ -7,10 +7,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 import core.Document.State;
-import core.state.AddDocumentState;
+import core.state.AddedDocumentState;
 import core.state.DocumentState;
 
-public class AddDocumentStateTest {
+public class AddedDocumentStateTest {
 
 	private Document document;
 	private DocumentState addDocumentState;
@@ -19,7 +19,7 @@ public class AddDocumentStateTest {
 	public void setUp() {
 		document = new Document();
 		document.setState( State.ADDED );
-		addDocumentState = new AddDocumentState();
+		addDocumentState = new AddedDocumentState();
 	}
 
 	@Test

@@ -4,7 +4,7 @@ import core.Document;
 import core.Document.State;
 
 //TODO rename to AddedDocumentState
-public class AddDocumentState implements DocumentState {
+public class AddedDocumentState implements DocumentState {
 
 	/* (non-Javadoc)
 	 * @see core.DocumentState#revert(core.Document)
