@@ -7,7 +7,7 @@ public class NewDocumentState {
 	}
 
 	public void save(Document document) {
-
+		document.setState( State.MODIFIED );
 	}
 
 }
