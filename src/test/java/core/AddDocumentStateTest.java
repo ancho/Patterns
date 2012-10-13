@@ -17,5 +17,17 @@ public class AddDocumentStateTest {
 		
 		assertThat( document.getState(), is( State.NEW ) );
 	}
+	
+	@Test
+	public void commitChangesStateToEnd() {
+		Document document = new Document();
+		document.setState( State.ADDED );
+		AddDocumentState addDocumentState = new AddDocumentState();
+		
+		addDocumentState.commit( document );
+		
+		assertThat( document.getState(), is( State.END ) );
+	}
+
 
 }

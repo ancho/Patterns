@@ -6,4 +6,8 @@ public class AddDocumentState {
 		document.setState( State.NEW );
 	}
 
+	public void commit(Document document) {
+		
+	}
+
 }
