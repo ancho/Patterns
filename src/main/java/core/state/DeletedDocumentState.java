@@ -1,13 +1,13 @@
 package core.state;
 
 import core.Document;
+import core.Document.State;
 
 public class DeletedDocumentState implements DocumentState {
 
 	@Override
 	public void revert(Document document) {
-		// TODO Auto-generated method stub
-
+		document.setState( State.MODIFIED );
 	}
 
 	@Override
