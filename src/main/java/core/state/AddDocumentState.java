@@ -3,6 +3,7 @@ package core.state;
 import core.Document;
 import core.Document.State;
 
+//TODO rename to AddedDocumentState
 public class AddDocumentState implements DocumentState {
 
 	/* (non-Javadoc)

@@ -21,5 +21,15 @@ public class ModifiedDocumentStateTest {
 		
 		assertThat( document.getState(), is( State.MODIFIED ) );
 	}
+	
+	public void deleteChangesStateToDeleted() {
+		Document document = new Document();
+		document.setState( State.MODIFIED );
+		DocumentState modifiedDocumentState = new ModifiedDocumentState();
+		
+		modifiedDocumentState.delete( document );
+		
+		assertThat( document.getState(), is( State.DELETED ) );
+	}
 
 }

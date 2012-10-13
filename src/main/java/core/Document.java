@@ -5,7 +5,7 @@ import java.io.File;
 public class Document {
 
 	public enum State {
-		NEW, MODIFIED, ADDED, END
+		NEW, MODIFIED, ADDED, END, DELETED
 	}
 	
 	private State state;
