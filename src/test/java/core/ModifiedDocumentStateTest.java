@@ -46,5 +46,12 @@ public class ModifiedDocumentStateTest {
 		assertThat( document.getState(), is( State.ADDED ) );
 	}
 	
+	@Test
+	public void commitChangesStateToEnd() throws Exception {
+		
+		modifiedDocumentState.commit(document);
+		
+		assertThat( document.getState(), is( State.END ) );
+	}
 
 }
