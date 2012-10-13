@@ -1,6 +1,6 @@
 package core;
 
-public class AddDocumentState {
+public class AddDocumentState implements DocumentState {
 
 	public void revert(Document document) {
 		document.setState( State.NEW );
