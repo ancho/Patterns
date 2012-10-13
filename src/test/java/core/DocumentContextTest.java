@@ -89,6 +89,29 @@ public class DocumentContextTest {
 		assertThat( document.getState(), is( State.END ));
 	}
 
+	@Test
+	public void saveChangesDocumentStatusToModifiedIfFileExistsOnNewDocument() throws Exception {
+		
+		new DocumentUtil(document).mockFileExists(true);
+		createDocumentContext();
+		
+		documentContext.save();
+		
+		assertThat( documentContext.getDocumentState(), is(instanceOf(ModifiedDocumentState.class)) );
+		assertThat( document.getState(), is( State.MODIFIED ));
+	}
+
+	@Test
+	public void saveChangesDocumentStatusToAddedIfFileDoesNotExistOnNewDocument() throws Exception {
+		
+		new DocumentUtil(document).mockFileExists(false);
+		createDocumentContext();
+		
+		documentContext.save();
+		
+		assertThat( documentContext.getDocumentState(), is(instanceOf(AddedDocumentState.class)) );
+		assertThat( document.getState(), is( State.ADDED ));
+	}
 
 	private void createDocumentContext() {
 		documentContext = DocumentContext.createDocumentContext(document);
