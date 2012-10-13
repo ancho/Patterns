@@ -22,5 +22,18 @@ public class DeletedDocumentStateTest {
 		
 		assertThat( document.getState(), is( State.MODIFIED ) );
 	}
+	
+	@Test
+	public void commitChangesStateToEnd() {
+		
+		Document document = new Document();
+		document.setState( State.DELETED );
+		DocumentState deletedDocumentState = new DeletedDocumentState();
+		
+		deletedDocumentState.commit(document);
+		
+		assertThat( document.getState(), is( State.END ) );
+	}
+
 
 }
