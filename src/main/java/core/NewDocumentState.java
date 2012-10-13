@@ -1,6 +1,6 @@
 package core;
 
-public class NewDocumentState {
+public class NewDocumentState implements DocumentState{
 
 	public void revert(Document document) {
 		
@@ -17,6 +17,11 @@ public class NewDocumentState {
 
 	public void delete(Document document) {
 		document.setState( State.END );
+	}
+
+	@Override
+	public void commit(Document document) {
+		
 	}
 	
 }

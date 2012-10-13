@@ -12,7 +12,7 @@ import org.junit.Test;
 public class NewDocumentStateTest {
 
 	private Document document;
-	private NewDocumentState newDocumentState;
+	private DocumentState newDocumentState;
 	
 	@Before
 	public void setUp() {
