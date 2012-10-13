@@ -48,6 +48,14 @@ public class NewDocumentStateTest {
 		
 		assertThat( document.getState(), is(State.ADDED) );
 	}
+	
+	@Test
+	public void deleteRemovesTheDocument() throws Exception {
+		
+		newDocumentState.delete( document );
+		
+		assertNull( document );
+	}
 
 	private void mockFileExists(boolean exists) {
 		File file = mock( File.class );
