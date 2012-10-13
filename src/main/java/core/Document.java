@@ -2,10 +2,27 @@ package core;
 
 import java.io.File;
 
+import core.state.*;
+
 public class Document {
 
 	public enum State {
-		NEW, MODIFIED, ADDED, END, DELETED
+		NEW( new NewDocumentState() ),
+		MODIFIED( new ModifiedDocumentState() ),
+		ADDED( new AddedDocumentState() ),
+		DELETED( new DeletedDocumentState() ),
+		END( null );
+		
+		DocumentState documentState;
+		
+		private State(DocumentState documentState) {
+			this.documentState = documentState;
+		}
+		
+		public DocumentState getDocumentState() {
+			return this.documentState;
+		}
+		
 	}
 	
 	private State state;
