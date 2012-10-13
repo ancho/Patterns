@@ -12,7 +12,7 @@ public class ModifiedDocumentState implements DocumentState {
 
 	@Override
 	public void commit(Document document) {
-
+		document.setState( State.END );
 	}
 
 	@Override
