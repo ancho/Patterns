@@ -12,8 +12,7 @@ public class DeletedDocumentState implements DocumentState {
 
 	@Override
 	public void commit(Document document) {
-		// TODO Auto-generated method stub
-
+		document.setState(State.END);
 	}
 
 	@Override
