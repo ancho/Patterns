@@ -6,14 +6,22 @@ import static org.mockito.Mockito.*;
 
 import java.io.File;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class NewDocumentStateTest {
 
+	private Document document;
+	private NewDocumentState newDocumentState;
+	
+	@Before
+	public void setUp() {
+		document = new Document();
+		newDocumentState = new NewDocumentState();
+	}
+
 	@Test
 	public void revertDoesNotChangeDocumentsState() {
-		Document document = new Document();
-		NewDocumentState newDocumentState = new NewDocumentState();
 		
 		newDocumentState.revert( document );
 		
@@ -22,30 +30,29 @@ public class NewDocumentStateTest {
 
 	@Test
 	public void saveChangesStateToModifiedIfFileExists() throws Exception {
-		Document document = new Document();
-		NewDocumentState newDocumentState = new NewDocumentState();
 
-		File file = mock( File.class );
-		when( file.exists() ).thenReturn( true );
-		document.setFile( file );
+		mockFileExists( true );
 
 		newDocumentState.save( document );
 		
 		assertThat( document.getState(), is(State.MODIFIED) );
 	}
+
 	
 	@Test
 	public void saveChangesStateToAddedIfFileDoesNotExist() throws Exception {
-		Document document = new Document();
-		NewDocumentState newDocumentState = new NewDocumentState();
 		
-		File file = mock( File.class );
-		when( file.exists() ).thenReturn( false );
-		document.setFile( file );
+		mockFileExists(false);
 		
 		newDocumentState.save( document );
 		
 		assertThat( document.getState(), is(State.ADDED) );
+	}
+
+	private void mockFileExists(boolean exists) {
+		File file = mock( File.class );
+		when( file.exists() ).thenReturn( exists );
+		document.setFile( file );
 	}
 
 }
