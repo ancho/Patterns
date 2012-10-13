@@ -3,6 +3,7 @@ package core;
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import core.Document.State;
@@ -11,12 +12,19 @@ import core.state.DocumentState;
 
 public class DeletedDocumentStateTest {
 
+	
+	private Document document;
+	private DocumentState deletedDocumentState;
+
+	@Before
+	public void setUp() {
+		document = new Document();
+		document.setState( State.DELETED );
+		deletedDocumentState = new DeletedDocumentState();
+	}
+	
 	@Test
 	public void revertChangesStateToModified() {
-		
-		Document document = new Document();
-		document.setState( State.DELETED );
-		DocumentState deletedDocumentState = new DeletedDocumentState();
 		
 		deletedDocumentState.revert(document);
 		
@@ -26,13 +34,17 @@ public class DeletedDocumentStateTest {
 	@Test
 	public void commitChangesStateToEnd() {
 		
-		Document document = new Document();
-		document.setState( State.DELETED );
-		DocumentState deletedDocumentState = new DeletedDocumentState();
-		
 		deletedDocumentState.commit(document);
 		
 		assertThat( document.getState(), is( State.END ) );
+	}
+	
+	@Test
+	public void deleteDoesNotChangeState() {
+		
+		deletedDocumentState.delete(document);
+		
+		assertThat( document.getState(), is( State.DELETED ) );
 	}
 
 
