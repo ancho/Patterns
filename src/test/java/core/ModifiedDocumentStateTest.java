@@ -23,22 +23,6 @@ public class ModifiedDocumentStateTest {
 	}
 
 	@Test
-	public void saveDoesNotChangeState() {
-		
-		modifiedDocumentState.save( document );
-		
-		assertThat( document.getState(), is( State.MODIFIED ) );
-	}
-	
-	@Test
-	public void deleteChangesStateToDeleted() {
-		
-		modifiedDocumentState.delete( document );
-		
-		assertThat( document.getState(), is( State.DELETED ) );
-	}
-	
-	@Test
 	public void revertChangesStateToAdded() throws Exception {
 		
 		modifiedDocumentState.revert(document);
@@ -54,4 +38,19 @@ public class ModifiedDocumentStateTest {
 		assertThat( document.getState(), is( State.END ) );
 	}
 
+	@Test
+	public void deleteChangesStateToDeleted() {
+		
+		modifiedDocumentState.delete( document );
+		
+		assertThat( document.getState(), is( State.DELETED ) );
+	}
+
+	@Test
+	public void saveDoesNotChangeState() {
+		
+		modifiedDocumentState.save( document );
+		
+		assertThat( document.getState(), is( State.MODIFIED ) );
+	}
 }

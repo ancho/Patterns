@@ -32,6 +32,23 @@ public class NewDocumentStateTest {
 		assertThat( document.getState(), is( State.NEW ) );
 	}
 
+	
+	@Test
+	public void commitDoesNotChangeState() throws Exception {
+		
+		newDocumentState.commit(document);
+		
+		assertThat( document.getState(), is(State.NEW) );
+	}
+
+	@Test
+	public void deleteChangesStateToEnd() throws Exception {
+		
+		newDocumentState.delete( document );
+		
+		assertThat( document.getState(), is(State.END) );
+	}
+
 	@Test
 	public void saveChangesStateToModifiedIfFileExists() throws Exception {
 
@@ -41,7 +58,6 @@ public class NewDocumentStateTest {
 		
 		assertThat( document.getState(), is(State.MODIFIED) );
 	}
-
 	
 	@Test
 	public void saveChangesStateToAddedIfFileDoesNotExist() throws Exception {
@@ -51,22 +67,6 @@ public class NewDocumentStateTest {
 		newDocumentState.save( document );
 		
 		assertThat( document.getState(), is(State.ADDED) );
-	}
-	
-	@Test
-	public void deleteChangesStateToEnd() throws Exception {
-		
-		newDocumentState.delete( document );
-		
-		assertThat( document.getState(), is(State.END) );
-	}
-	
-	@Test
-	public void commitDoesNotChangeState() throws Exception {
-		
-		newDocumentState.commit(document);
-		
-		assertThat( document.getState(), is(State.NEW) );
 	}
 
 	private void mockFileExists(boolean exists) {

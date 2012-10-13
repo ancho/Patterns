@@ -37,7 +37,7 @@ public class AddDocumentStateTest {
 		
 		assertThat( document.getState(), is( State.END ) );
 	}
-	
+
 	@Test
 	public void deleteChangesStateToEnd() {
 		
