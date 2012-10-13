@@ -6,4 +6,8 @@ public class NewDocumentState {
 		
 	}
 
+	public void save(Document document) {
+
+	}
+
 }

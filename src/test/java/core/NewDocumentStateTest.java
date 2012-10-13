@@ -14,7 +14,16 @@ public class NewDocumentStateTest {
 		
 		newDocumentState.revert( document );
 		
-		assertThat( document.state, is( State.NEW ) );
+		assertThat( document.getState(), is( State.NEW ) );
 	}
 
+	@Test
+	public void saveChangesStateToModifiedIfFileExists() throws Exception {
+		Document document = new Document();
+		NewDocumentState newDocumentState = new NewDocumentState();
+		
+		newDocumentState.save( document );
+		
+		assertThat( document.getState(), is(State.MODIFIED) );
+	}
 }
