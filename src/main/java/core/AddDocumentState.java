@@ -7,7 +7,7 @@ public class AddDocumentState {
 	}
 
 	public void commit(Document document) {
-		
+		document.setState( State.END );
 	}
 
 }
