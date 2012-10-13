@@ -46,6 +46,15 @@ public class DeletedDocumentStateTest {
 		
 		assertThat( document.getState(), is( State.DELETED ) );
 	}
+	
+	@Test
+	public void saveDoesNotChangeState() {
+		
+		deletedDocumentState.save(document);
+		
+		assertThat( document.getState(), is( State.DELETED ) );
+	}
+
 
 
 }
