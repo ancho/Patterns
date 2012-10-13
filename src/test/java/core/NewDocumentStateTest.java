@@ -26,4 +26,15 @@ public class NewDocumentStateTest {
 		
 		assertThat( document.getState(), is(State.MODIFIED) );
 	}
+	
+	@Test
+	public void saveChangesStateToAddedIfFileDoesNotExist() throws Exception {
+		Document document = new Document();
+		NewDocumentState newDocumentState = new NewDocumentState();
+		
+		newDocumentState.save( document );
+		
+		assertThat( document.getState(), is(State.ADDED) );
+	}
+
 }
