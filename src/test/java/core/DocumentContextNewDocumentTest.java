@@ -1,6 +1,5 @@
 package core;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.*;
@@ -20,18 +19,16 @@ public class DocumentContextNewDocumentTest extends DocumentContextTest {
 		
 		documentContext.revert();
 		
-		assertThat( documentContext.getDocumentState(), is( instanceOf( NewDocumentState.class )));
-		assertThat( document.getState(), is( State.NEW ));
+		assertDocumentStateAndInternalState(NewDocumentState.class, State.NEW);
 	}
-	
+
 	@Test
 	public void commitDoesNotChangeDocumentStatusOnNewDocument() throws Exception {
 		createDocumentContext();
 		
 		documentContext.commit();
 		
-		assertThat( documentContext.getDocumentState(), is( instanceOf( NewDocumentState.class )));
-		assertThat( document.getState(), is( State.NEW ));
+		assertDocumentStateAndInternalState(NewDocumentState.class, State.NEW);
 	}
 
 	@Test
@@ -52,8 +49,7 @@ public class DocumentContextNewDocumentTest extends DocumentContextTest {
 		
 		documentContext.save();
 		
-		assertThat( documentContext.getDocumentState(), is(instanceOf(ModifiedDocumentState.class)) );
-		assertThat( document.getState(), is( State.MODIFIED ));
+		assertDocumentStateAndInternalState(ModifiedDocumentState.class, State.MODIFIED);
 	}
 
 	@Test
@@ -63,9 +59,8 @@ public class DocumentContextNewDocumentTest extends DocumentContextTest {
 		createDocumentContext();
 		
 		documentContext.save();
-		
-		assertThat( documentContext.getDocumentState(), is(instanceOf(AddedDocumentState.class)) );
-		assertThat( document.getState(), is( State.ADDED ));
+
+		assertDocumentStateAndInternalState(AddedDocumentState.class, State.ADDED);
 	}
 
 
