@@ -9,7 +9,7 @@ import core.state.NewDocumentState;
 public class DocumentContextAddedDocumentTest extends DocumentContextTest {
 
 	@Test
-	public void revertChangesDocumentStatusToNew() {
+	public void revertChangesDocumentStateToNew() {
 		document.setState(State.ADDED);
 		createDocumentContext();
 		
@@ -19,7 +19,7 @@ public class DocumentContextAddedDocumentTest extends DocumentContextTest {
 	}
 	
 	@Test
-	public void commitChangesDocumentStatusToEnd() {
+	public void commitChangesDocumentStateToEnd() {
 		document.setState(State.ADDED);
 		createDocumentContext();
 		
