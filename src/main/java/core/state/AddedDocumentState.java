@@ -11,6 +11,7 @@ public class AddedDocumentState implements DocumentState {
 	 */
 	@Override
 	public void revert(Document document) {
+		//TODO: Execute command here
 		document.setState( State.NEW );
 	}
 
@@ -19,6 +20,7 @@ public class AddedDocumentState implements DocumentState {
 	 */
 	@Override
 	public void commit(Document document) {
+		//TODO: Execute command here
 		document.setState( State.END );
 	}
 
@@ -27,6 +29,7 @@ public class AddedDocumentState implements DocumentState {
 	 */
 	@Override
 	public void delete(Document document) {
+		//TODO: Execute command here		
 		document.setState( State.END );
 	}
 
@@ -35,7 +38,7 @@ public class AddedDocumentState implements DocumentState {
 	 */
 	@Override
 	public void save(Document document) {
-		
+		//Nothing to do here
 	}
 
 }
