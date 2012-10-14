@@ -40,6 +40,15 @@ public class DocumentContextDeletedDocumentTest extends DocumentContextTest {
 		
 		assertDocumentStateAndInternalState(DeletedDocumentState.class, State.DELETED);
 	}
+	
+	@Test
+	public void saveDoesNotChangeDocumentState() throws Exception {
+		
+		documentContext.save();
+		
+		assertDocumentStateAndInternalState(DeletedDocumentState.class, State.DELETED);
+	}
+
 
 
 
