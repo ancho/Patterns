@@ -22,7 +22,7 @@ public class EndDocumentState implements DocumentState {
 
 	@Override
 	public void save(Document document) {
-
+		throw new IllegalOperationException("Dies ist ein Endzustand");
 	}
 
 }
