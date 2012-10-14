@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import core.Document.State;
+import core.state.DeletedDocumentState;
 import core.state.EndDocumentState;
 import core.state.ModifiedDocumentState;
 
@@ -31,5 +32,15 @@ public class DocumentContextDeletedDocumentTest extends DocumentContextTest {
 		
 		assertDocumentStateAndInternalState(EndDocumentState.class, State.END);
 	}
+	
+	@Test
+	public void deleteDoesNotChangeDocumentState() throws Exception {
+		
+		documentContext.delete();
+		
+		assertDocumentStateAndInternalState(DeletedDocumentState.class, State.DELETED);
+	}
+
+
 
 }
