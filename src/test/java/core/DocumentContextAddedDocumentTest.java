@@ -1,5 +1,6 @@
 package core;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import core.Document.State;
@@ -9,10 +10,14 @@ import core.state.NewDocumentState;
 
 public class DocumentContextAddedDocumentTest extends DocumentContextTest {
 
-	@Test
-	public void revertChangesDocumentStateToNew() {
+	@Before
+	public void setUp(){
+		super.setUp();
 		document.setState(State.ADDED);
 		createDocumentContext();
+	}
+	@Test
+	public void revertChangesDocumentStateToNew() {
 		
 		documentContext.revert();
 		
@@ -21,8 +26,6 @@ public class DocumentContextAddedDocumentTest extends DocumentContextTest {
 	
 	@Test
 	public void commitChangesDocumentStateToEnd() {
-		document.setState(State.ADDED);
-		createDocumentContext();
 		
 		documentContext.commit();
 		
@@ -31,8 +34,6 @@ public class DocumentContextAddedDocumentTest extends DocumentContextTest {
 	
 	@Test
 	public void deleteChangesDocumentStateToEnd() {
-		document.setState(State.ADDED);
-		createDocumentContext();
 		
 		documentContext.delete();
 		
@@ -41,8 +42,6 @@ public class DocumentContextAddedDocumentTest extends DocumentContextTest {
 	
 	@Test
 	public void saveDoesNotChangeDocumentState() {
-		document.setState(State.ADDED);
-		createDocumentContext();
 		
 		documentContext.save();
 		
