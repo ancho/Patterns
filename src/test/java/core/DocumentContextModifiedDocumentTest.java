@@ -1,10 +1,9 @@
 package core;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 import core.Document.State;
+import core.state.EndDocumentState;
 import core.state.NewDocumentState;
 
 public class DocumentContextModifiedDocumentTest extends DocumentContextTest{
@@ -18,4 +17,15 @@ public class DocumentContextModifiedDocumentTest extends DocumentContextTest{
 		
 		assertDocumentStateAndInternalState(NewDocumentState.class, State.NEW);
 	}
+	
+	@Test
+	public void commitChangesDocumentStateToEnd() throws Exception {
+		document.setState( State.MODIFIED );
+		createDocumentContext();
+		
+		documentContext.commit();
+		
+		assertDocumentStateAndInternalState(EndDocumentState.class, State.END);
+	}
+
 }
