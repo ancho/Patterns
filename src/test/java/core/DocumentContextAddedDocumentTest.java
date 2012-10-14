@@ -3,6 +3,7 @@ package core;
 import org.junit.Test;
 
 import core.Document.State;
+import core.state.EndDocumentState;
 import core.state.NewDocumentState;
 
 public class DocumentContextAddedDocumentTest extends DocumentContextTest {
@@ -16,5 +17,16 @@ public class DocumentContextAddedDocumentTest extends DocumentContextTest {
 		
 		assertDocumentStateAndInternalState(NewDocumentState.class, State.NEW);
 	}
+	
+	@Test
+	public void commitChangesDocumentStatusToEnd() {
+		document.setState(State.ADDED);
+		createDocumentContext();
+		
+		documentContext.commit();
+		
+		assertDocumentStateAndInternalState(EndDocumentState.class, State.END);
+	}
+
 
 }
