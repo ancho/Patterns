@@ -41,6 +41,21 @@ public class EndDocumentStateTest {
 		endDocumentState.commit( document );
 	}
 	
+	@Test
+	public void deleteShouldThrowException() {
+		Document document = new Document();
+		document.setState(State.END);
+		DocumentState endDocumentState = new EndDocumentState();
+		
+		thrown.expect(IllegalOperationException.class);
+		thrown.expectMessage( startsWith("Operation nicht erlaubt"));
+		thrown.expectMessage("Endzustand");
+		
+		endDocumentState.delete( document );
+	}
+
+	
+	
 	
 
 
