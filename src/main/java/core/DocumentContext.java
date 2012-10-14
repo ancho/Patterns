@@ -27,7 +27,8 @@ public class DocumentContext {
 	}
 
 	public void revert() {
-		
+		this.documentState.revert(this.document);
+		updateDocumentState();
 	}
 
 	public void commit() {
