@@ -24,11 +24,11 @@ public class ModifiedDocumentStateTest {
 	}
 
 	@Test
-	public void revertChangesStateToAdded() throws Exception {
+	public void revertChangesStateToNew() throws Exception {
 		
 		modifiedDocumentState.revert(document);
 		
-		assertThat( document.getState(), is( State.ADDED ) );
+		assertThat( document.getState(), is( State.NEW ) );
 	}
 	
 	@Test
