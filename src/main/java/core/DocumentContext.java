@@ -13,7 +13,7 @@ public class DocumentContext {
 	
 	public static DocumentContext createDocumentContext(Document document) {
 		DocumentContext documentContext = new DocumentContext(document);
-		documentContext.setDocumentState( document.getState().getDocumentState() );
+		documentContext.updateDocumentState();
 		return documentContext;
 	}
 
@@ -38,13 +38,14 @@ public class DocumentContext {
 		updateDocumentState();
 	}
 
-	private void updateDocumentState() {
-		setDocumentState( this.document.getState().getDocumentState() );
-	}
 
 	public void save() {
 		this.documentState.save(this.document);
 		updateDocumentState();	
+	}
+
+	protected void updateDocumentState() {
+		setDocumentState( this.document.getDocumentState() );
 	}
 
 }

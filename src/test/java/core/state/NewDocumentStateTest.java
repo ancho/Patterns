@@ -1,14 +1,13 @@
-package core;
+package core.state;
 
-import static org.junit.Assert.*;
-import static org.hamcrest.CoreMatchers.*;
-import static org.mockito.Mockito.*;
-
-import java.io.File;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 
 import org.junit.Before;
 import org.junit.Test;
 
+import core.Document;
+import core.DocumentMockUtil;
 import core.Document.State;
 import core.state.DocumentState;
 import core.state.NewDocumentState;

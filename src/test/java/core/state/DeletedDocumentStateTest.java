@@ -1,4 +1,4 @@
-package core;
+package core.state;
 
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
@@ -6,6 +6,7 @@ import static org.hamcrest.CoreMatchers.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import core.Document;
 import core.Document.State;
 import core.state.DeletedDocumentState;
 import core.state.DocumentState;

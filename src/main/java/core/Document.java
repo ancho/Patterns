@@ -11,7 +11,7 @@ public class Document {
 		MODIFIED( new ModifiedDocumentState() ),
 		ADDED( new AddedDocumentState() ),
 		DELETED( new DeletedDocumentState() ),
-		END( null );
+		END( null ); //TODO introduce EndDocumentState
 		
 		DocumentState documentState;
 		
@@ -48,6 +48,7 @@ public class Document {
 		return file;
 	}
 	
-	//TODO implement getDocumentState
-
+	public DocumentState getDocumentState() {
+		return this.state.getDocumentState();
+	}
 }
