@@ -27,6 +27,17 @@ public class DocumentContextAddedDocumentTest extends DocumentContextTest {
 		
 		assertDocumentStateAndInternalState(EndDocumentState.class, State.END);
 	}
+	
+	@Test
+	public void deleteChangesDocumentStateToEnd() {
+		document.setState(State.ADDED);
+		createDocumentContext();
+		
+		documentContext.delete();
+		
+		assertDocumentStateAndInternalState(EndDocumentState.class, State.END);
+	}
+
 
 
 }

@@ -32,6 +32,8 @@ public class DocumentContext {
 	}
 
 	public void commit() {
+		this.documentState.commit(this.document);
+		updateDocumentState();
 	}
 
 	public void delete() {
