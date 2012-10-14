@@ -1,5 +1,6 @@
 package core.state;
 
+import static org.junit.Assert.*;
 import static org.hamcrest.Matchers.startsWith;
 
 import org.junit.Rule;
@@ -26,6 +27,7 @@ public class EndDocumentStateTest {
 		thrown.expectMessage("Endzustand");
 		
 		endDocumentState.revert( document );
+		fail();
 	}
 	
 	@Test
@@ -39,6 +41,7 @@ public class EndDocumentStateTest {
 		thrown.expectMessage("Endzustand");
 		
 		endDocumentState.commit( document );
+		fail();
 	}
 	
 	@Test
@@ -52,6 +55,7 @@ public class EndDocumentStateTest {
 		thrown.expectMessage("Endzustand");
 		
 		endDocumentState.delete( document );
+		fail();
 	}
 	
 	@Test
@@ -65,6 +69,7 @@ public class EndDocumentStateTest {
 		thrown.expectMessage("Endzustand");
 		
 		endDocumentState.save( document );
+		fail();
 	}
 
 }
