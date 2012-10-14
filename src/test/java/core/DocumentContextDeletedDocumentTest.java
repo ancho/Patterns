@@ -1,10 +1,9 @@
 package core;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 import core.Document.State;
+import core.state.EndDocumentState;
 import core.state.ModifiedDocumentState;
 
 public class DocumentContextDeletedDocumentTest extends DocumentContextTest {
@@ -18,4 +17,15 @@ public class DocumentContextDeletedDocumentTest extends DocumentContextTest {
 		
 		assertDocumentStateAndInternalState(ModifiedDocumentState.class, State.MODIFIED);
 	}
+	
+	@Test
+	public void commitChangesDocumentStateToEnd() throws Exception {
+		document.setState(State.DELETED);
+		createDocumentContext();
+		
+		documentContext.commit();
+		
+		assertDocumentStateAndInternalState(EndDocumentState.class, State.END);
+	}
+
 }
