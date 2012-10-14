@@ -17,13 +17,11 @@ public class EndDocumentState implements DocumentState {
 
 	@Override
 	public void delete(Document document) {
-		// TODO Auto-generated method stub
-
+		throw new IllegalOperationException("Dies ist ein Endzustand");
 	}
 
 	@Override
 	public void save(Document document) {
-		// TODO Auto-generated method stub
 
 	}
 
