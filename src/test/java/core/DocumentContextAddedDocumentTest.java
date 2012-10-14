@@ -3,6 +3,7 @@ package core;
 import org.junit.Test;
 
 import core.Document.State;
+import core.state.AddedDocumentState;
 import core.state.EndDocumentState;
 import core.state.NewDocumentState;
 
@@ -37,6 +38,17 @@ public class DocumentContextAddedDocumentTest extends DocumentContextTest {
 		
 		assertDocumentStateAndInternalState(EndDocumentState.class, State.END);
 	}
+	
+	@Test
+	public void saveDoesNotChangeDocumentState() {
+		document.setState(State.ADDED);
+		createDocumentContext();
+		
+		documentContext.save();
+		
+		assertDocumentStateAndInternalState(AddedDocumentState.class, State.ADDED);
+	}
+
 
 
 
