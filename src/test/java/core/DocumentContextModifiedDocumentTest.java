@@ -3,6 +3,7 @@ package core;
 import org.junit.Test;
 
 import core.Document.State;
+import core.state.DeletedDocumentState;
 import core.state.EndDocumentState;
 import core.state.NewDocumentState;
 
@@ -27,5 +28,16 @@ public class DocumentContextModifiedDocumentTest extends DocumentContextTest{
 		
 		assertDocumentStateAndInternalState(EndDocumentState.class, State.END);
 	}
+	
+	@Test
+	public void deleteChangesDocumentStateToDeleted() throws Exception {
+		document.setState( State.MODIFIED );
+		createDocumentContext();
+		
+		documentContext.delete();
+		
+		assertDocumentStateAndInternalState(DeletedDocumentState.class, State.DELETED);
+	}
+
 
 }
