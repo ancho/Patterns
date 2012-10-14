@@ -1,7 +1,7 @@
 package core.state;
 
 import static org.junit.Assert.*;
-import static org.hamcrest.Matchers.startsWith;
+import static org.hamcrest.Matchers.*;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -26,8 +26,8 @@ public class EndDocumentStateTest {
 		thrown.expectMessage( startsWith("Operation nicht erlaubt"));
 		thrown.expectMessage("Endzustand");
 		
+		assertThat(document.getState(), is(State.END));
 		endDocumentState.revert( document );
-		fail();
 	}
 	
 	@Test

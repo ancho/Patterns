@@ -1,13 +1,10 @@
 package core;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.nullValue;
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 import core.Document.State;
 import core.state.AddedDocumentState;
+import core.state.EndDocumentState;
 import core.state.ModifiedDocumentState;
 import core.state.NewDocumentState;
 
@@ -37,8 +34,7 @@ public class DocumentContextNewDocumentTest extends DocumentContextTest {
 		
 		documentContext.delete();
 		
-		assertThat( documentContext.getDocumentState(), nullValue() );
-		assertThat( document.getState(), is( State.END ));
+		assertDocumentStateAndInternalState(EndDocumentState.class, State.END);
 	}
 
 	@Test

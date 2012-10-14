@@ -11,7 +11,7 @@ public class Document {
 		MODIFIED( new ModifiedDocumentState() ),
 		ADDED( new AddedDocumentState() ),
 		DELETED( new DeletedDocumentState() ),
-		END( null ); //TODO introduce EndDocumentState
+		END( new EndDocumentState() );
 		
 		DocumentState documentState;
 		
